@@ -2,12 +2,12 @@ name: Deployment to EC2
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Build docker_compose
         run: docker-compose up -d --build
       - name: Build application
@@ -16,7 +16,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Deploy application
         env:
           PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
