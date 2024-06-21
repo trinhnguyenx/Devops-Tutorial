@@ -61,7 +61,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ubuntu
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.EC2_SSH_KEY}}
           script: |
             aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 524387458597.dkr.ecr.ap-southeast-1.amazonaws.com/sgroup-tutorial:latest
             docker pull 524387458597.dkr.ecr.ap-southeast-1.amazonaws.com/sgroup-tutorial:latest
