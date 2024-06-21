@@ -1,23 +1,23 @@
-version: '3.8'  # Phiên bản của Docker Compose được sử dụng.
-services:  # Services là một danh sách các service mà bạn muốn chạy.
-  app:  
-    build:  
-      context: . 
-      dockerfile: Dockerfile  
-    ports:  
-      - "3000:3001"  
-    depends_on:  # Chỉ định các services mà service này phụ thuộc vào.
-      - mongodb  
-    environment:  
-      DATABASE_URL: mongodb://mongodb:27017/sgroup
+version: '3.8' # Phiên bản của Docker Compose được sử dụng.
+services: # Services là một danh sách các service mà bạn muốn chạy.
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3001'
+    depends_on:
+      - mongodb
+    environment:
+      DATABASE_URL: mongodb+srv://nguyencongtrinhqb:sgroup123@cluster0.qom7v1f.mongodb.net/sgroup
       PORT: 3000
-  
-  mongodb:  # Service này đại diện cho MongoDB.
-    image: mongo:4.4  
-    ports:  
-      - "27017:27017"  
-    volumes:  
-      - mongo-data:/data/db  
 
-volumes:  
-  mongo-data:  
+  mongodb:
+    image: mongo:4.4
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

@@ -1,7 +1,7 @@
 
-FROM node:18 AS base
+FROM node:18-alpine AS base
 
-RUN npm i -g pnpm
+RUN npm i -g pnpm@9.1.2
 
 FROM base AS dependencies
 
@@ -33,12 +33,5 @@ CMD [ "node", "dist/main.js" ]
 
 
 
-
-
-
-
-
-
-
 #docker build -t my-nest-app .   
-#docker run -p 3000:3001 my-nest-app   
+#docker run -p 3000:3000 my-nest-app   
