@@ -67,7 +67,7 @@ jobs:
             docker pull 524387458597.dkr.ecr.ap-southeast-1.amazonaws.com/sgroup-tutorial:latest
             docker stop sgroup-devops-container || true
             docker rm sgroup-devops-container || true
-            docker run -d --name sgroup-devops-container -p 3000:3000 -e DATABASE_URL= ${{env.URI_DATABASE}} 524387458597.dkr.ecr.ap-southeast-1.amazonaws.com/sgroup-tutorial:latest
+            docker run -d --name sgroup-devops-container -p 3000:3000 -e DATABASE_URL=mongodb+srv://nguyencongtrinhqb:sgroup123@cluster0.qom7v1f.mongodb.net/sgroup 524387458597.dkr.ecr.ap-southeast-1.amazonaws.com/sgroup-tutorial:latest
 
       - name: Clean up SSH key file
         if: always()
