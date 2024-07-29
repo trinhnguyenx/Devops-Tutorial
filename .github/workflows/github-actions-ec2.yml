@@ -13,20 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 20
-
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build Docker image
-        run: docker build -t sgroup-devops .
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -50,12 +36,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Create temporary directory
-        run: mkdir -p ~/.ssh
-
-      - name: Setup SSH
-        run: echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/sgrdevops.pem && chmod 600 ~/.ssh/sgrdevops.pem
-
       - name: SSH to EC2 and deploy
         uses: appleboy/ssh-action@v0.1.6
         with:
@@ -69,6 +49,4 @@ jobs:
             docker rm sgroup-devops-container || true
             docker run -d --name sgroup-devops-container -p 3000:3000 -e DATABASE_URL=mongodb+srv://nguyencongtrinhqb:sgroup123@cluster0.qom7v1f.mongodb.net/sgroup 524387458597.dkr.ecr.ap-southeast-1.amazonaws.com/sgroup-tutorial:latest
 
-      - name: Clean up SSH key file
-        if: always()
-        run: rm -f ~/.ssh/key.pem
+
