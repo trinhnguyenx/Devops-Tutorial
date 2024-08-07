@@ -6,8 +6,4 @@ export class AppController {
   getHello(): string {
     return 'Hello, world!77797777999';
   }
-  @Get('health')
-  getHealth(@Response() res : any, req: string): string {
-    return res.send('hello, world!');
-  }
 }
