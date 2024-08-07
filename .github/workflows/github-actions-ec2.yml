@@ -26,6 +26,7 @@ jobs:
 
       - name: Push to ECR
         run: |
+          docker images
           docker tag sgroup-devops:latest 524387458597.dkr.ecr.us-east-1.amazonaws.com/sgroup-devops:latest
           docker push 524387458597.dkr.ecr.us-east-1.amazonaws.com/sgroup-devops:latest
   deploy:
