@@ -4,6 +4,6 @@ import { Controller, Get, Response } from '@nestjs/common';
 export class AppController {
   @Get()
   getHello(): string {
-    return 'Hello, world!77797777999';
+    return 'Hello, world!';
   }
 }
